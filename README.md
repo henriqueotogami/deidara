@@ -6,6 +6,10 @@
 
 <br>
 <br>
+<div align="center">
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/henriquemap/deidara">
+</div>
+<br>
 <img src="https://img.shields.io/github/issues/henriquemap/deidara">
 <img src="https://img.shields.io/github/forks/henriquemap/deidara">
 <img src="https://img.shields.io/github/stars/henriquemap/deidara">
