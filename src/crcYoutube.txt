@@ -1,0 +1,47 @@
+/Users/henriquematheusalvespereira/Library/Java/JavaVirtualMachines/openjdk-19.0.1/Contents/Home/bin/java -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=61092:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath /Users/henriquematheusalvespereira/Documents/Github/deidara/out/production/deidara CrcYoutube
+main(): Enter the data to be encrypted
+11001
+main(): data=11001
+main(): padding=16
+main(): dividend=110010
+main(): dividend=1100100
+main(): dividend=11001000
+main(): dividend=110010000
+main(): dividend=1100100000
+main(): dividend=11001000000
+main(): dividend=110010000000
+main(): dividend=1100100000000
+main(): dividend=11001000000000
+main(): dividend=110010000000000
+main(): dividend=1100100000000000
+main(): dividend=11001000000000000
+main(): dividend=110010000000000000
+main(): dividend=1100100000000000000
+main(): dividend=11001000000000000000
+main(): dividend=110010000000000000000
+crc(): shift=4
+crc(): dividend=1000001100011000
+final dividend=1000001100011000
+main(): Sender checksum=1000001100011000
+main(): Codeword transmitted over the network=110011000001100011000
+main(): Enter the received codeword
+110011000001100011000
+crc(): shift=4
+crc(): dividend=0
+crc(): adding left zero=00
+crc(): adding left zero=000
+crc(): adding left zero=0000
+crc(): adding left zero=00000
+crc(): adding left zero=000000
+crc(): adding left zero=0000000
+crc(): adding left zero=00000000
+crc(): adding left zero=000000000
+crc(): adding left zero=0000000000
+crc(): adding left zero=00000000000
+crc(): adding left zero=000000000000
+crc(): adding left zero=0000000000000
+crc(): adding left zero=00000000000000
+crc(): adding left zero=000000000000000
+crc(): adding left zero=0000000000000000
+final dividend=0000000000000000
+main(): No error in transmission
