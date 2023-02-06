@@ -11,9 +11,9 @@ import java.io.IOException;
 public class StartScreenCalculation extends Application {
     @Override
     public void start(final Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(StartScreenCalculation.class.getResource("/hello-view.fxml"));
+//        FXMLLoader fxmlLoader = new FXMLLoader(StartScreenCalculation.class.getResource("/hello-view.fxml"));
         final ScreenCalculation screenCalculation = new ScreenCalculation();
-        screenCalculation.startScreenCalculation(fxmlLoader, stage);
+        screenCalculation.startScreenCalculation(stage);
     }
 
     public static void main(String[] args) {
