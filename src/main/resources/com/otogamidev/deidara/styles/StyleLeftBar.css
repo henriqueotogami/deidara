@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: bold;
+    src: url('OpenSans-Bold.ttf');
+}
+
+.style-field-select-algorithm {
+    -fx-background-radius: 5;
+    -fx-background-color: #D9D9D9;
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font: 12px;
+    -fx-font-weight: bold;
+}
+
+.style-buttons-vertical-box {
+    -fx-spacing: 10;
+    -fx-padding: 30,0,0,0;
+}
+
+.style-deidara-icon {
+    -fx-background-radius: 5;
+}
+
+.style-pane-left-bar {
+    -fx-background-color: #A88610;
+}

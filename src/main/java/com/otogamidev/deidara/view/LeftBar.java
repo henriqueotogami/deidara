@@ -1,22 +1,20 @@
 package com.otogamidev.deidara.view;
 
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 
 public class LeftBar {
 
     private Pane paneLeftBar = new Pane();
     private String pathStyleFile = getClass().getResource("/StyleLeftBar.css").toExternalForm();
     private String pathDeidaraIcon = getClass().getResource("/deidara-icon.png").toExternalForm();
+    private String pathGoogleFonts = "https://fonts.googleapis.com/css2?family=Open+Sans";
+    private String pathLocalOpenSans =  getClass().getResource("/OpenSans-Bold.ttf").toExternalForm();
 
     public LeftBar(final int barWidth, final int barHeight){
         System.out.println("LeftBar - LeftBar(): BEGIN");
@@ -30,57 +28,73 @@ public class LeftBar {
     }
 
     public Pane createPaneLeftBar() {
-        final VBox verticalBox = new VBox();
 
-        final TextField fieldSelectAlgorithmOne = createFieldSelectAlgorithm();
-        final TextField fieldSelectAlgorithmTwo = createFieldSelectAlgorithm();
-        final TextField fieldSelectAlgorithmThree = createFieldSelectAlgorithm();
-        final TextField fieldSelectAlgorithmFour = createFieldSelectAlgorithm();
-        final TextField fieldSelectAlgorithmFive = createFieldSelectAlgorithm();
-        final TextField fieldSelectAlgorithmSix = createFieldSelectAlgorithm();
-        final TextField fieldSelectAlgorithmSeven = createFieldSelectAlgorithm();
-        final TextField fieldSelectAlgorithmEight = createFieldSelectAlgorithm();
-        final TextField fieldSelectAlgorithmNine = createFieldSelectAlgorithm();
-        final TextField fieldSelectAlgorithmTen = createFieldSelectAlgorithm();
+        final VBox buttonsVerticalBox = new VBox();
+        final VBox groupVerticalBox = new VBox();
+
+        final Button fieldSelectAlgorithmOne = createFieldSelectAlgorithm("AlgorithmOne");
+        final Button fieldSelectAlgorithmTwo = createFieldSelectAlgorithm("AlgorithmTwo");
+        final Button fieldSelectAlgorithmThree = createFieldSelectAlgorithm("AlgorithmThree");
+        final Button fieldSelectAlgorithmFour = createFieldSelectAlgorithm("AlgorithmFour");
+        final Button fieldSelectAlgorithmFive = createFieldSelectAlgorithm("AlgorithmFive");
+        final Button fieldSelectAlgorithmSix = createFieldSelectAlgorithm("AlgorithmSix");
+        final Button fieldSelectAlgorithmSeven = createFieldSelectAlgorithm("AlgorithmSeven");
+        final Button fieldSelectAlgorithmEight = createFieldSelectAlgorithm("AlgorithmEight");
+        final Button fieldSelectAlgorithmNine = createFieldSelectAlgorithm("AlgorithmNine");
+        final Button fieldSelectAlgorithmTen = createFieldSelectAlgorithm("AlgorithmTen");
 
         final Image imageDeidara = new Image(pathDeidaraIcon);
         final ImageView iconDeidara = new ImageView();
+        final BorderPane paneIconDeidara = new BorderPane();
+        final int paddingTop = 0;
+        final int paddingLeft = 40;
+        final int paddingBottom = 10;
+        final int paddingRight = 40;
+        final Insets positionIconDeidara = new Insets(paddingTop, paddingLeft, paddingBottom, paddingRight);
+
         iconDeidara.setImage(imageDeidara);
         iconDeidara.getStyleClass().add("style-deidara-icon");
+        iconDeidara.setFitWidth(120);
+        iconDeidara.setFitHeight(120);
 
-        verticalBox.getChildren().add(fieldSelectAlgorithmOne);
-        verticalBox.getChildren().add(fieldSelectAlgorithmTwo);
-        verticalBox.getChildren().add(fieldSelectAlgorithmThree);
-        verticalBox.getChildren().add(fieldSelectAlgorithmFour);
-        verticalBox.getChildren().add(fieldSelectAlgorithmFive);
-        verticalBox.getChildren().add(fieldSelectAlgorithmSix);
-        verticalBox.getChildren().add(fieldSelectAlgorithmSeven);
-        verticalBox.getChildren().add(fieldSelectAlgorithmEight);
-        verticalBox.getChildren().add(fieldSelectAlgorithmNine);
-        verticalBox.getChildren().add(fieldSelectAlgorithmTen);
+        paneIconDeidara.setPrefSize(200,220);
+        paneIconDeidara.setTop(iconDeidara);
+        paneIconDeidara.setPadding(positionIconDeidara);
 
-        verticalBox.setSpacing(10);
-        verticalBox.getStyleClass().add("style-vertical-box");
-        paneLeftBar.getChildren().add(verticalBox);
-        paneLeftBar.getChildren().add(iconDeidara);
+        buttonsVerticalBox.getChildren().add(fieldSelectAlgorithmOne);
+        buttonsVerticalBox.getChildren().add(fieldSelectAlgorithmTwo);
+        buttonsVerticalBox.getChildren().add(fieldSelectAlgorithmThree);
+        buttonsVerticalBox.getChildren().add(fieldSelectAlgorithmFour);
+        buttonsVerticalBox.getChildren().add(fieldSelectAlgorithmFive);
+        buttonsVerticalBox.getChildren().add(fieldSelectAlgorithmSix);
+        buttonsVerticalBox.getChildren().add(fieldSelectAlgorithmSeven);
+        buttonsVerticalBox.getChildren().add(fieldSelectAlgorithmEight);
+        buttonsVerticalBox.getChildren().add(fieldSelectAlgorithmNine);
+        buttonsVerticalBox.getChildren().add(fieldSelectAlgorithmTen);
+        buttonsVerticalBox.getStyleClass().add("style-buttons-vertical-box");
+        buttonsVerticalBox.getStylesheets().add(pathLocalOpenSans);
+
+        groupVerticalBox.getChildren().add(buttonsVerticalBox);
+        groupVerticalBox.getChildren().add(paneIconDeidara);
+
+        paneLeftBar.getChildren().add(groupVerticalBox);
+        paneLeftBar.getStyleClass().add("style-pane-left-bar");
         paneLeftBar.getStylesheets().add(pathStyleFile);
         return paneLeftBar;
     }
 
-    private static TextField createFieldSelectAlgorithm() {
-        final TextField fieldSelectAlgorithm = new TextField();
+    private static Button createFieldSelectAlgorithm(final String buttonName) {
+
+        final Button fieldSelectAlgorithm = new Button(buttonName);
 
         fieldSelectAlgorithm.setPrefWidth(140);
         fieldSelectAlgorithm.setMinWidth(140);
         fieldSelectAlgorithm.setMaxWidth(140);
 
-        fieldSelectAlgorithm.setPrefHeight(20);
-        fieldSelectAlgorithm.setMinHeight(20);
-        fieldSelectAlgorithm.setMaxHeight(20);
-
+        fieldSelectAlgorithm.setPrefHeight(25);
+        fieldSelectAlgorithm.setMinHeight(25);
+        fieldSelectAlgorithm.setMaxHeight(25);
         fieldSelectAlgorithm.getStyleClass().add("style-field-select-algorithm");
         return fieldSelectAlgorithm;
     }
-
-
 }

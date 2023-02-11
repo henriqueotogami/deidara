@@ -1,0 +1,25 @@
+.style-field-input{
+    -fx-background-radius: 5;
+    -fx-background-color: #D9D9D9;
+
+}
+
+.style-field-output{
+    -fx-background-radius: 5;
+    -fx-background-color: #D9D9D9;
+
+}
+
+.style-field-about-algorithm {
+    -fx-background-radius: 5;
+    -fx-background-color: #D9D9D9;
+
+}
+
+.style-vertical-box {
+    -fx-spacing: 10;
+}
+
+.style-pane-body {
+    -fx-background-color: #D6A700;
+}
