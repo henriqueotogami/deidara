@@ -1,6 +1,5 @@
 package com.otogamidev.deidara.view;
 
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -26,10 +25,25 @@ public class ScreenCalculation {
         final AlgorithmBody algorithmBody = new AlgorithmBody(algorithmWidth, algorithmHeight);
         final HBox horizontalBox = new HBox();
 
-        stage.setTitle("Hello!");
-        horizontalBox.getChildren().add(leftBar);
-        horizontalBox.getChildren().add(algorithmBody);
+        horizontalBox.setPrefHeight(windowHeight);
+        horizontalBox.setMinHeight(windowHeight);
+        horizontalBox.setMaxHeight(windowHeight);
+        horizontalBox.setPrefWidth(windowWidth);
+        horizontalBox.setMinWidth(windowWidth);
+        horizontalBox.setMaxWidth(windowWidth);
+        horizontalBox.getChildren().add(leftBar.createPaneLeftBar());
+        horizontalBox.getChildren().add(algorithmBody.createAlgorithmBody());
+
         final Scene scene = new Scene(horizontalBox, windowWidth, windowHeight);
+
+        stage.setTitle("Deidara - CRC");
+        stage.setResizable(false);
+        stage.setWidth(windowWidth);
+        stage.setMinWidth(windowWidth);
+        stage.setMaxWidth(windowWidth);
+        stage.setHeight(windowHeight);
+        stage.setMinHeight(windowHeight);
+        stage.setMaxHeight(windowHeight);
         stage.setScene(scene);
         stage.show();
     }
