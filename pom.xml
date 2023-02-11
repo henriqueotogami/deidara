@@ -76,8 +76,25 @@
             <resource>
                 <directory>src/main/resources/com/otogamidev/deidara</directory>
                 <includes>
-                    <include>**/*.css</include>
                     <include>**/*.fxml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources/com/otogamidev/deidara/fonts</directory>
+                <includes>
+                    <include>**/*.ttf</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources/com/otogamidev/deidara/images</directory>
+                <includes>
+                    <include>**/*.png</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources/com/otogamidev/deidara/styles</directory>
+                <includes>
+                    <include>**/*.css</include>
                 </includes>
             </resource>
         </resources>
