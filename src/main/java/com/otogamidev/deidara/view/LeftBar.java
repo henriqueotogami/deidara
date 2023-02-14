@@ -91,9 +91,9 @@ public class LeftBar {
         fieldSelectAlgorithm.setMinWidth(140);
         fieldSelectAlgorithm.setMaxWidth(140);
 
-        fieldSelectAlgorithm.setPrefHeight(25);
-        fieldSelectAlgorithm.setMinHeight(25);
-        fieldSelectAlgorithm.setMaxHeight(25);
+        fieldSelectAlgorithm.setPrefHeight(20);
+        fieldSelectAlgorithm.setMinHeight(20);
+        fieldSelectAlgorithm.setMaxHeight(20);
         fieldSelectAlgorithm.getStyleClass().add("style-field-select-algorithm");
         return fieldSelectAlgorithm;
     }
