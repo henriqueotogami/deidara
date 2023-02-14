@@ -9,8 +9,9 @@
     -fx-background-radius: 5;
     -fx-background-color: #D9D9D9;
     -fx-font-family: "Open Sans", sans-serif;
-    -fx-font: 12px;
+    -fx-font-size: 10px;
     -fx-font-weight: bold;
+    -fx-text-fill: #612FCC;
 }
 
 .style-buttons-vertical-box {
