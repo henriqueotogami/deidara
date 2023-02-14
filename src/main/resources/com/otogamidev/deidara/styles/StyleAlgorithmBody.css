@@ -1,19 +1,25 @@
-.style-field-input{
-    -fx-background-radius: 5;
-    -fx-background-color: #D9D9D9;
-
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: bold;
+    src: url('OpenSans-Bold.ttf');
 }
 
-.style-field-output{
-    -fx-background-radius: 5;
+.style-field-input {
+    -fx-background-radius: 5px;
     -fx-background-color: #D9D9D9;
+    -fx-text-fill: #612FCC;
+}
 
+.style-field-output {
+    -fx-background-radius: 5px;
+    -fx-background-color: #D9D9D9;
+    -fx-text-fill: #612FCC;
 }
 
 .style-field-about-algorithm {
     -fx-background-radius: 5;
-    -fx-background-color: #D9D9D9;
-
+    -fx-text-fill: #612FCC;
 }
 
 .style-vertical-box {
@@ -22,4 +28,39 @@
 
 .style-pane-body {
     -fx-background-color: #D6A700;
+}
+
+.style-title-field-input {
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #612FCC;
+}
+
+.style-title-field-output {
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #612FCC;
+}
+
+.style-text-click-expand {
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #612FCC;
+}
+
+.style-text-radio-buttons{
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #612FCC;
+}
+
+.style-title-about-body {
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #612FCC;
 }
