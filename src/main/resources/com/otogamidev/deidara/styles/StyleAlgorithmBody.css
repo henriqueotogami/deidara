@@ -1,25 +1,88 @@
 @font-face {
     font-family: 'Open Sans';
     font-style: normal;
-    font-weight: bold;
-    src: url('OpenSans-Bold.ttf');
+    src: url('OpenSans-Regular.ttf');
+}
+
+.style-title-field-input {
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font-size: 20px;
+    -fx-font-weight: bolder;
+    -fx-text-fill: #612FCC;
 }
 
 .style-field-input {
     -fx-background-radius: 5px;
     -fx-background-color: #D9D9D9;
+}
+
+.style-inner-text-field-input {
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font-size: 10px;
+    -fx-font-weight: bolder;
+    -fx-text-fill: #1C1818;
+    -fx-text-alignment: justified;
+}
+
+.style-title-field-output {
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font-size: 20px;
+    -fx-font-weight: bolder;
     -fx-text-fill: #612FCC;
 }
 
 .style-field-output {
     -fx-background-radius: 5px;
     -fx-background-color: #D9D9D9;
+}
+
+.style-inner-text-field-output {
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font-size: 10px;
+    -fx-font-weight: bolder;
+    -fx-text-fill: #1C1818;
+    -fx-text-alignment: justified;
+}
+
+.style-text-click-expand {
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font-size: 11px;
+    -fx-font-weight: bolder;
+    -fx-text-fill: #612FCC;
+}
+
+.style-text-radio-buttons{
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font-size: 12px;
+    -fx-font-weight: bolder;
+    -fx-text-fill: #612FCC;
+}
+
+.style-title-about-algorithm {
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font-size: 20px;
+    -fx-font-weight: bolder;
     -fx-text-fill: #612FCC;
 }
 
 .style-field-about-algorithm {
     -fx-background-radius: 5;
-    -fx-text-fill: #612FCC;
+    -fx-background-color: #D9D9D9;
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font-size: 10px;
+    -fx-font-weight: bolder;
+    -fx-text-fill: #1C1818;
+    -fx-text-alignment: justified;
+    -fx-wrap-text: true;
+}
+
+.style-inner-text-field-about-algorithm {
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font-size: 10px;
+    -fx-font-weight: bolder;
+    -fx-text-fill: #1C1818;
+    -fx-text-alignment: justified;
+    -fx-padding: 0,0,0,50;
 }
 
 .style-vertical-box {
@@ -28,39 +91,4 @@
 
 .style-pane-body {
     -fx-background-color: #D6A700;
-}
-
-.style-title-field-input {
-    -fx-font-family: "Open Sans", sans-serif;
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #612FCC;
-}
-
-.style-title-field-output {
-    -fx-font-family: "Open Sans", sans-serif;
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #612FCC;
-}
-
-.style-text-click-expand {
-    -fx-font-family: "Open Sans", sans-serif;
-    -fx-font-size: 10px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #612FCC;
-}
-
-.style-text-radio-buttons{
-    -fx-font-family: "Open Sans", sans-serif;
-    -fx-font-size: 10px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #612FCC;
-}
-
-.style-title-about-body {
-    -fx-font-family: "Open Sans", sans-serif;
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #612FCC;
 }
