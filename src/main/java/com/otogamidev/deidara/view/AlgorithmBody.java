@@ -2,9 +2,7 @@ package com.otogamidev.deidara.view;
 
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
@@ -69,12 +67,18 @@ public class AlgorithmBody {
         buttonOct.setPadding(paddingButton);
         buttonBin.setPadding(paddingButton);
 
+        buttonASCII.getStyleClass().add("style-text-radio-buttons");
+        buttonHex.getStyleClass().add("style-text-radio-buttons");
+        buttonDec.getStyleClass().add("style-text-radio-buttons");
+        buttonOct.getStyleClass().add("style-text-radio-buttons");
+        buttonBin.getStyleClass().add("style-text-radio-buttons");
+
         final HBox dualHorizontalBox = new HBox();
         final int paddingTopHbox = 0;
         final int paddingLeftHbox = 0;
-        final int paddingBotomHbox = 20;
+        final int paddingBottomHbox = 20;
         final int paddingRightHbox = 0;
-        final Insets paddingHorizontalBox = new Insets(paddingTopHbox, paddingLeftHbox, paddingBotomHbox, paddingRightHbox);
+        final Insets paddingHorizontalBox = new Insets(paddingTopHbox, paddingLeftHbox, paddingBottomHbox, paddingRightHbox);
 
         dualHorizontalBox.getChildren().add(buttonASCII);
         dualHorizontalBox.getChildren().add(buttonHex);
@@ -82,7 +86,6 @@ public class AlgorithmBody {
         dualHorizontalBox.getChildren().add(buttonOct);
         dualHorizontalBox.getChildren().add(buttonBin);
         dualHorizontalBox.setPadding(paddingHorizontalBox);
-        dualHorizontalBox.getStyleClass().add("style-text-radio-buttons");
 
         return dualHorizontalBox;
     }
@@ -93,18 +96,18 @@ public class AlgorithmBody {
         final GridPane horizontalHeaderPane = new GridPane();
         final HBox inputSelectDataType = createGroupDataType();
 
-        final Text textInput = new Text("INPUT");
+        final Label titleFieldInput = new Label("INPUT");
         final Hyperlink textClickToExpand = new Hyperlink("CLICK TO EXPAND");
         final TextField fieldInput = new TextField();
         final ColumnConstraints columnZeroWidth = new ColumnConstraints(150);
         final ColumnConstraints columnOneWidth = new ColumnConstraints(150);
 
-        textInput.getStyleClass().add("style-title-field-input");
+        titleFieldInput.getStyleClass().add("style-title-field-input");
         textClickToExpand.getStyleClass().add("style-text-click-expand");
 
         horizontalHeaderPane.getColumnConstraints().add(columnZeroWidth);
         horizontalHeaderPane.getColumnConstraints().add(columnOneWidth);
-        horizontalHeaderPane.addRow(0,textInput,textClickToExpand);
+        horizontalHeaderPane.addRow(0,titleFieldInput,textClickToExpand);
         horizontalHeaderPane.getColumnConstraints().get(0).setHalignment(HPos.LEFT);
         horizontalHeaderPane.getColumnConstraints().get(1).setHalignment(HPos.RIGHT);
 
@@ -125,7 +128,7 @@ public class AlgorithmBody {
         final GridPane horizontalHeaderPane = new GridPane();
         final HBox outputSelectDataType = createGroupDataType();
 
-        final Text textOutput = new Text("OUTPUT");
+        final Label textOutput = new Label("OUTPUT");
         final Hyperlink textClickToExpand = new Hyperlink("CLICK TO EXPAND");
         final TextField fieldOutput = new TextField();
         final ColumnConstraints columnZeroWidth = new ColumnConstraints(150);
@@ -154,8 +157,16 @@ public class AlgorithmBody {
     private static VBox createAboutBox() {
 
         final VBox verticalAboutBox = new VBox();
-        final Text textAbout = new Text("About this algorithm");
-        final TextField fieldAboutAlgorithm = new TextField();
+        final Label titleAboutAlgorithm = new Label("About this algorithm");
+        final TextArea fieldAboutAlgorithm = new TextArea();
+
+        final Text innerTextFieldAboutLoremIpsum = new Text(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et " +
+                    "dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip " +
+                    "ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu " +
+                    "fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt " +
+                    "mollit anim id est laborum."
+        );
 
         final int paddingTopAbout = 100;
         final int paddingLeftAbout = 0;
@@ -163,13 +174,16 @@ public class AlgorithmBody {
         final int paddingRightAbout = 0;
         final Insets paddingAbout = new Insets(paddingTopAbout, paddingLeftAbout, paddingBottomAbout, paddingRightAbout);
 
-        textAbout.getStyleClass().add("style-title-about-body");
+        titleAboutAlgorithm.getStyleClass().add("style-title-about-algorithm");
+        innerTextFieldAboutLoremIpsum.getStyleClass().add("style-inner-text-field-about-algorithm");
 
         fieldAboutAlgorithm.setPrefWidth(300);
         fieldAboutAlgorithm.setPrefHeight(220);
+        fieldAboutAlgorithm.setText(innerTextFieldAboutLoremIpsum.getText());
+        fieldAboutAlgorithm.setEditable(false);
         fieldAboutAlgorithm.getStyleClass().add("style-field-about-algorithm");
 
-        verticalAboutBox.getChildren().add(textAbout);
+        verticalAboutBox.getChildren().add(titleAboutAlgorithm);
         verticalAboutBox.getChildren().add(fieldAboutAlgorithm);
 
         return verticalAboutBox;
