@@ -44,6 +44,7 @@ public class AlgorithmBody {
 
         paneAlgorithmBody.getChildren().add(paneBody);
         paneAlgorithmBody.getStylesheets().add(pathStyleFile);
+
         return paneAlgorithmBody;
     }
 

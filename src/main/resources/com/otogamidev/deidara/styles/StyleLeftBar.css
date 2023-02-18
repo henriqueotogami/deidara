@@ -23,6 +23,10 @@
     -fx-background-radius: 5;
 }
 
-.style-pane-left-bar {
+.style-vertical-box {
     -fx-background-color: #A88610;
+}
+
+.style-pane-left-bar {
+    -fx-background-radius: 0px 0px 30px 30px;
 }

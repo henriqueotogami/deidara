@@ -76,6 +76,7 @@ public class LeftBar {
 
         groupVerticalBox.getChildren().add(buttonsVerticalBox);
         groupVerticalBox.getChildren().add(paneIconDeidara);
+        groupVerticalBox.getStyleClass().add("style-vertical-box");
 
         paneLeftBar.getChildren().add(groupVerticalBox);
         paneLeftBar.getStyleClass().add("style-pane-left-bar");

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalDependencies">
+    <plugin id="Coverage" />
+    <plugin id="Git4Idea" />
+    <plugin id="com.almightyalpaca.intellij.plugins.discord" />
+    <plugin id="com.intellij.java" />
+    <plugin id="com.itcodebox.fxtools.id" />
+    <plugin id="com.mallowigi" />
+    <plugin id="com.wakatime.intellij.plugin" />
+    <plugin id="cz.bios.idea" />
+    <plugin id="izhangzhihao.rainbow.brackets" />
+    <plugin id="net.antelle.intellij-xcode-dark-theme" />
+    <plugin id="org.intellij.plugins.markdown" />
+    <plugin id="org.jetbrains.plugins.gradle.maven" />
+    <plugin id="zielu.gittoolbox" />
+  </component>
+</project>

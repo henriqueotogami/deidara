@@ -91,4 +91,5 @@
 
 .style-pane-body {
     -fx-background-color: #D6A700;
+    -fx-background-radius: 0px 0px 50px 50px;
 }
