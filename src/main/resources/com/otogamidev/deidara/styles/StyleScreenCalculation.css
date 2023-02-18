@@ -1,0 +1,32 @@
+.style-close-window-button-red {
+    -fx-background-radius: 10px;
+    -fx-background-color: #FF0000;
+}
+
+.style-minimize-window-button-yellow {
+    -fx-background-radius: 10px;
+    -fx-background-color: #FFE600;
+}
+
+.style-zoom-window-button-green {
+    -fx-background-radius: 10px;
+    -fx-background-color: #05FF00;
+}
+
+.style-left-color-header {
+    -fx-background-color: #A88610;
+}
+
+.style-right-color-header {
+    -fx-background-color: #D6A700;
+}
+
+.style-twice-color-header {
+    -fx-background-radius: 20px;
+    -fx-border-radius: 30px;
+}
+
+.style-vertical-box-header-and-body {
+    -fx-background-radius: 20px;
+    -fx-border-radius: 30px;
+}
