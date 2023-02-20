@@ -4,6 +4,15 @@
     src: url('OpenSans-Regular.ttf');
 }
 
+.style-header-name-algorithm{
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font-size: 20px;
+    -fx-font-weight: bolder;
+    -fx-text-fill: #D6A700;
+    -fx-background-radius: 5px;
+    -fx-background-color: #612FCC;
+}
+
 .style-title-field-input {
     -fx-font-family: "Open Sans", sans-serif;
     -fx-font-size: 20px;
@@ -22,6 +31,17 @@
     -fx-font-weight: bolder;
     -fx-text-fill: #1C1818;
     -fx-text-alignment: justified;
+}
+
+.style-button-calculate-crc{
+    -fx-alignment: center;
+    -fx-background-radius: 5px;
+    -fx-background-color: #1C1818;
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #D6A700;
+
 }
 
 .style-title-field-output {
@@ -91,5 +111,5 @@
 
 .style-pane-body {
     -fx-background-color: #D6A700;
-    -fx-background-radius: 0px 0px 50px 50px;
+    -fx-background-radius: 0px 0px 0px 0px;
 }

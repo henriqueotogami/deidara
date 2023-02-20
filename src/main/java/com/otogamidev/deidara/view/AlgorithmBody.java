@@ -14,7 +14,11 @@ public class AlgorithmBody {
     public AlgorithmBody(final int bodyWidth, final int bodyHeight) {
         System.out.println("AlgorithmBody - AlgorithmBody(): BEGIN");
         paneAlgorithmBody.setPrefWidth(bodyWidth);
+        paneAlgorithmBody.setMaxWidth(bodyWidth);
+        paneAlgorithmBody.setMinWidth(bodyWidth);
         paneAlgorithmBody.setPrefHeight(bodyHeight);
+        paneAlgorithmBody.setMaxHeight(bodyHeight);
+        paneAlgorithmBody.setMinHeight(bodyHeight);
         System.out.println("AlgorithmBody - AlgorithmBody(): END");
     }
 
@@ -25,6 +29,7 @@ public class AlgorithmBody {
         final VBox fieldOutput = createOutputBox();
         final VBox fieldAboutAlgorithm = createAboutBox();
         final BorderPane paneBody = new BorderPane();
+        final TextField headerNameAlgorithm = createHeaderNameAlgorithm();
 
         final int paddingTopPane = 15;
         final int paddingLeftPane = 50;
@@ -32,7 +37,28 @@ public class AlgorithmBody {
         final int paddingRightPane = 50;
         final Insets paddingPaneBody = new Insets(paddingTopPane, paddingLeftPane, paddingBottomPane, paddingRightPane);
 
+        final Button buttonCalculateCRC = new Button("CALCULATE");
+
+        final int paddingButtonTopPane = 0;
+        final int paddingButtonLeftPane = 0;
+        final int paddingButtonBottomPane = 0;
+        final int paddingButtonRightPane = 0;
+        final Insets paddingButtonCalculateCRC = new Insets(paddingButtonTopPane, paddingButtonLeftPane, paddingButtonBottomPane, paddingButtonRightPane);
+
+        buttonCalculateCRC.setMinWidth(140);
+        buttonCalculateCRC.setMaxWidth(140);
+        buttonCalculateCRC.setPrefWidth(140);
+        buttonCalculateCRC.setMinHeight(20);
+        buttonCalculateCRC.setMaxHeight(20);
+        buttonCalculateCRC.setPrefHeight(20);
+        buttonCalculateCRC.setPadding(paddingButtonCalculateCRC);
+        buttonCalculateCRC.getStyleClass().add("style-button-calculate-crc");
+
+        verticalBodyBox.setPrefWidth(300);
+        verticalBodyBox.setPrefHeight(500);
+        verticalBodyBox.getChildren().add(headerNameAlgorithm);
         verticalBodyBox.getChildren().add(fieldInput);
+        verticalBodyBox.getChildren().add(buttonCalculateCRC);
         verticalBodyBox.getChildren().add(fieldOutput);
         verticalBodyBox.getChildren().add(fieldAboutAlgorithm);
         verticalBodyBox.getStyleClass().add("style-vertical-box");
@@ -46,6 +72,22 @@ public class AlgorithmBody {
         paneAlgorithmBody.getStylesheets().add(pathStyleFile);
 
         return paneAlgorithmBody;
+    }
+
+    private static TextField createHeaderNameAlgorithm() {
+
+        final TextField headerNameAlgorithm = new TextField("ALGORITHM-01");
+
+        headerNameAlgorithm.setMaxWidth(300);
+        headerNameAlgorithm.setMinWidth(300);
+        headerNameAlgorithm.setPrefWidth(400);
+        headerNameAlgorithm.setMaxHeight(35);
+        headerNameAlgorithm.setMinHeight(35);
+        headerNameAlgorithm.setPrefHeight(35);
+        headerNameAlgorithm.setEditable(false);
+        headerNameAlgorithm.getStyleClass().add("style-header-name-algorithm");
+
+        return headerNameAlgorithm;
     }
 
     private static HBox createGroupDataType() {
