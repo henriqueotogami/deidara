@@ -31,17 +31,17 @@ public class ScreenCalculation {
         final LeftBar leftBar = new LeftBar(barWidth, barHeight);
         final AlgorithmBody algorithmBody = new AlgorithmBody(algorithmWidth, algorithmHeight);
         final HBox horizontalBoxBody = createWindowBody(windowWidth, windowHeight, leftBar, algorithmBody);
-        final GridPane horizontalWindowsTopButtons = createWindowHeader();
+//        final GridPane horizontalWindowsTopButtons = createWindowHeader();
         final VBox verticalBoxHeaderAndBody = new VBox();
 
-        verticalBoxHeaderAndBody.getChildren().add(horizontalWindowsTopButtons);
+//        verticalBoxHeaderAndBody.getChildren().add(horizontalWindowsTopButtons);
         verticalBoxHeaderAndBody.getChildren().add(horizontalBoxBody);
         verticalBoxHeaderAndBody.getStyleClass().add("style-vertical-box-header-and-body");
 
         final Scene scene = new Scene(verticalBoxHeaderAndBody, windowWidth, windowHeight);
-        scene.setFill(Color.TRANSPARENT);
+//        scene.setFill(Color.TRANSPARENT);
 
-        stage.initStyle(StageStyle.UNDECORATED);
+//        stage.initStyle(StageStyle.UNDECORATED);
         stage.setResizable(false);
         stage.setWidth(windowWidth);
         stage.setMinWidth(windowWidth);
