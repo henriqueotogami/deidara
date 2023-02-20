@@ -5,6 +5,15 @@
     src: url('OpenSans-Bold.ttf');
 }
 
+.style-button-back-home-page {
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #D9D9D9;
+    -fx-alignment: center;
+    -fx-background-color: transparent;
+}
+
 .style-field-select-algorithm {
     -fx-background-radius: 5;
     -fx-background-color: #D9D9D9;
@@ -16,17 +25,20 @@
 
 .style-buttons-vertical-box {
     -fx-spacing: 10;
-    -fx-padding: 30,0,0,0;
+    -fx-padding: 10;
+    -fx-alignment: center;
 }
 
 .style-deidara-icon {
     -fx-background-radius: 5;
+    -fx-alignment: center;
 }
 
 .style-vertical-box {
+    -fx-spacing: 10;
     -fx-background-color: #A88610;
 }
 
 .style-pane-left-bar {
-    -fx-background-radius: 0px 0px 30px 30px;
+    -fx-background-radius: 0px 0px 0px 0px;
 }
