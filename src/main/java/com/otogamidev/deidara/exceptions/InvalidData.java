@@ -1,2 +1,4 @@
-package com.otogamidev.deidara.exceptions;public class InvalidData {
+package com.otogamidev.deidara.exceptions;
+
+public class InvalidData {
 }
