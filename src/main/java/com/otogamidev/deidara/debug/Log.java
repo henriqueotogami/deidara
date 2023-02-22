@@ -1,2 +1,4 @@
-package com.otogamidev.deidara.logs;public class Print {
+package com.otogamidev.deidara.debug;
+
+public class Log {
 }
