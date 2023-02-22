@@ -32,6 +32,10 @@ Curso: [Cod3r | Java 2022 Completo](https://www.udemy.com/course/fundamentos-de-
 
 <br>
 
+## Referência
+
+- Associação de ícones de pastas da arquitetura: [Material Theme - Docs: Folder Associations](https://material-theme.com/docs/reference/folder-associations/)
+
 ## Ambiente de Desenvolvimento
 
 ### Sistema Operacional: MacOS Monterey - Versão 12.6

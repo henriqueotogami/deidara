@@ -11,6 +11,9 @@ public class AlgorithmBody {
     private Pane paneAlgorithmBody = new Pane();
     private String pathStyleFile = getClass().getResource("/StyleAlgorithmBody.css").toExternalForm();
 
+    private static final TextField fieldInput = new TextField();
+    private static final TextField fieldOutput = new TextField();
+
     public AlgorithmBody(final int bodyWidth, final int bodyHeight) {
         System.out.println("AlgorithmBody - AlgorithmBody(): BEGIN");
         paneAlgorithmBody.setPrefWidth(bodyWidth);
@@ -141,7 +144,7 @@ public class AlgorithmBody {
 
         final Label titleFieldInput = new Label("INPUT");
         final Hyperlink textClickToExpand = new Hyperlink("CLICK TO EXPAND");
-        final TextField fieldInput = new TextField();
+
         final ColumnConstraints columnZeroWidth = new ColumnConstraints(150);
         final ColumnConstraints columnOneWidth = new ColumnConstraints(150);
 
@@ -173,7 +176,7 @@ public class AlgorithmBody {
 
         final Label textOutput = new Label("OUTPUT");
         final Hyperlink textClickToExpand = new Hyperlink("CLICK TO EXPAND");
-        final TextField fieldOutput = new TextField();
+
         final ColumnConstraints columnZeroWidth = new ColumnConstraints(150);
         final ColumnConstraints columnOneWidth = new ColumnConstraints(150);
 

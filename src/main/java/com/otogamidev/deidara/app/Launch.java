@@ -7,6 +7,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class StartScreenCalculation extends Application {
+
+    private ReceiveInputData receiveInputData;
+    private SendOutputData sendOutputData;
+
     @Override
     public void start(final Stage stage) throws IOException {
         final ScreenCalculation screenCalculation = new ScreenCalculation();
@@ -14,6 +18,9 @@ public class StartScreenCalculation extends Application {
     }
 
     public static void main(String[] args) {
+
         launch();
+
+
     }
 }
