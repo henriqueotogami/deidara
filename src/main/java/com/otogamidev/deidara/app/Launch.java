@@ -1,26 +1,18 @@
-package com.otogamidev.deidara.controller;
+package com.otogamidev.deidara.app;
 
-import com.otogamidev.deidara.view.ScreenCalculation;
+import com.otogamidev.deidara.controllers.MainManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
-public class StartScreenCalculation extends Application {
-
-    private ReceiveInputData receiveInputData;
-    private SendOutputData sendOutputData;
+public class Launch extends Application {
 
     @Override
-    public void start(final Stage stage) throws IOException {
-        final ScreenCalculation screenCalculation = new ScreenCalculation();
-        screenCalculation.startScreenCalculation(stage);
+    public void start(final Stage stage) {
+        final MainManager manager = new MainManager(stage);
+        manager.initExecution();
     }
 
     public static void main(String[] args) {
-
         launch();
-
-
     }
 }
