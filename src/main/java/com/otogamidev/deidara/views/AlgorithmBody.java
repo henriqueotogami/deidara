@@ -1,4 +1,4 @@
-package com.otogamidev.deidara.view;
+package com.otogamidev.deidara.views;
 
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -11,8 +11,9 @@ public class AlgorithmBody {
     private Pane paneAlgorithmBody = new Pane();
     private String pathStyleFile = getClass().getResource("/StyleAlgorithmBody.css").toExternalForm();
 
-    private static final TextField fieldInput = new TextField();
-    private static final TextField fieldOutput = new TextField();
+    private final TextField fieldInput = new TextField();
+    private final TextField fieldOutput = new TextField();
+    final Button buttonCalculateCRC = new Button("CALCULATE");
 
     public AlgorithmBody(final int bodyWidth, final int bodyHeight) {
         System.out.println("AlgorithmBody - AlgorithmBody(): BEGIN");
@@ -24,6 +25,12 @@ public class AlgorithmBody {
         paneAlgorithmBody.setMinHeight(bodyHeight);
         System.out.println("AlgorithmBody - AlgorithmBody(): END");
     }
+
+    public TextField getFieldInput() { return fieldInput; }
+
+    public TextField getFieldOutput() { return fieldOutput; }
+
+    public Button getButtonCalculateCRC() { return buttonCalculateCRC; }
 
     public Pane createAlgorithmBody() {
 
@@ -39,8 +46,6 @@ public class AlgorithmBody {
         final int paddingBottomPane = 0;
         final int paddingRightPane = 50;
         final Insets paddingPaneBody = new Insets(paddingTopPane, paddingLeftPane, paddingBottomPane, paddingRightPane);
-
-        final Button buttonCalculateCRC = new Button("CALCULATE");
 
         final int paddingButtonTopPane = 0;
         final int paddingButtonLeftPane = 0;
@@ -136,7 +141,7 @@ public class AlgorithmBody {
         return dualHorizontalBox;
     }
 
-    private static VBox createInputBox() {
+    private VBox createInputBox() {
 
         final VBox verticalInputBox = new VBox();
         final GridPane horizontalHeaderPane = new GridPane();
@@ -157,7 +162,7 @@ public class AlgorithmBody {
         horizontalHeaderPane.getColumnConstraints().get(0).setHalignment(HPos.LEFT);
         horizontalHeaderPane.getColumnConstraints().get(1).setHalignment(HPos.RIGHT);
 
-        fieldInput.setPrefWidth(300);
+        this.fieldInput.setPrefWidth(300);
         fieldInput.setPrefHeight(25);
         fieldInput.getStyleClass().add("style-field-input");
 
@@ -168,7 +173,7 @@ public class AlgorithmBody {
         return verticalInputBox;
     }
 
-    private static VBox createOutputBox() {
+    private VBox createOutputBox() {
 
         final VBox verticalOutputBox = new VBox();
         final GridPane horizontalHeaderPane = new GridPane();
@@ -200,7 +205,7 @@ public class AlgorithmBody {
         return verticalOutputBox;
     }
 
-    private static VBox createAboutBox() {
+    private VBox createAboutBox() {
 
         final VBox verticalAboutBox = new VBox();
         final Label titleAboutAlgorithm = new Label("About this algorithm");

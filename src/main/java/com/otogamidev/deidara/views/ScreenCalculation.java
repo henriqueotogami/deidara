@@ -1,4 +1,4 @@
-package com.otogamidev.deidara.view;
+package com.otogamidev.deidara.views;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -6,9 +6,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -18,6 +16,8 @@ public class ScreenCalculation {
 
     }
     private String pathStyleFile = getClass().getResource("/StyleScreenCalculation.css").toExternalForm();
+
+    private static AlgorithmBody algorithmBody = null;
 
     public void startScreenCalculation(final Stage stage) throws IOException {
 
@@ -29,7 +29,7 @@ public class ScreenCalculation {
         final int algorithmHeight = 600;
 
         final LeftBar leftBar = new LeftBar(barWidth, barHeight);
-        final AlgorithmBody algorithmBody = new AlgorithmBody(algorithmWidth, algorithmHeight);
+        algorithmBody = new AlgorithmBody(algorithmWidth, algorithmHeight);
         final HBox horizontalBoxBody = createWindowBody(windowWidth, windowHeight, leftBar, algorithmBody);
 //        final GridPane horizontalWindowsTopButtons = createWindowHeader();
         final VBox verticalBoxHeaderAndBody = new VBox();
@@ -53,6 +53,8 @@ public class ScreenCalculation {
         stage.getScene().getStylesheets().setAll(pathStyleFile);
         stage.show();
     }
+
+    public AlgorithmBody getAlgorithmBody() { return algorithmBody; }
 
     private GridPane createWindowHeader() {
         final HBox horizontalWindowsTopButtons = new HBox();

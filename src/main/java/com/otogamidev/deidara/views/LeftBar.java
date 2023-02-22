@@ -1,4 +1,4 @@
-package com.otogamidev.deidara.view;
+package com.otogamidev.deidara.views;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
