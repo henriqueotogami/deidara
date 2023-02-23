@@ -10,15 +10,32 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Classe responsável pela composição visual e principal da janela de cálculo do CRC.
+ * @author henriquematheusalvespereira
+ * @since 22-02-2023
+ */
 public class ScreenCalculation {
 
-    public ScreenCalculation() {
-
-    }
+//    Atributos da classe ScreenCalculation
     private String pathStyleFile = getClass().getResource("/StyleScreenCalculation.css").toExternalForm();
 
     private static AlgorithmBody algorithmBody = null;
 
+//    Métodos da classe ScreenCalculation
+
+    /**
+     * Método construtor da classe ScreenCalculation.
+     */
+    public ScreenCalculation() {
+
+    }
+
+    /**
+     * Método responsável pela composição da LeftBar e da AlgorithmBody.
+     * @param stage Instância da janela principal
+     * @throws IOException
+     */
     public void startScreenCalculation(final Stage stage) throws IOException {
 
         final int windowWidth = 600;
@@ -54,8 +71,16 @@ public class ScreenCalculation {
         stage.show();
     }
 
+    /**
+     * Método responsável pela obtenção da coluna do algoritmo selecionado.
+     * @return Retorna a composicão da coluna do algoritmo selecionado.
+     */
     public AlgorithmBody getAlgorithmBody() { return algorithmBody; }
 
+    /**
+     * Método responsável pela composição visual dos botões de ação da janela no cabeçalho.
+     * @return Retorna a composição visual dos botões de ação da janela no cabeçalho.
+     */
     private GridPane createWindowHeader() {
         final HBox horizontalWindowsTopButtons = new HBox();
 
@@ -121,6 +146,14 @@ public class ScreenCalculation {
         return twiceColorHeader;
     }
 
+    /**
+     * Método responsável pela união da LeftBar e da AlgoritmBody.
+     * @param windowWidth Instância contendo a largura total da janela.
+     * @param windowHeight Instância contendo a altura total da janela.
+     * @param leftBar Instância contendo a LeftBar.
+     * @param algorithmBody Instância contendo a AlgorithmBody.
+     * @return Retorna a composição da janela completa.
+     */
     private HBox createWindowBody(final int windowWidth, final int windowHeight, final LeftBar leftBar, final AlgorithmBody algorithmBody) {
 
         final HBox horizontalBox = new HBox();

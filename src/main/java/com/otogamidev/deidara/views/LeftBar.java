@@ -9,14 +9,27 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+/**
+ * Classe responsável pela composição visual da barra lateral de seleção do algoritmo.
+ * @author henriquematheusalvespereira
+ * @since 22-02-2023
+ */
 public class LeftBar {
 
+//    Atributos da classe LeftBar
     private Pane paneLeftBar = new Pane();
     private String pathStyleFile = getClass().getResource("/StyleLeftBar.css").toExternalForm();
     private String pathDeidaraIcon = getClass().getResource("/deidara-icon.png").toExternalForm();
     private String pathGoogleFonts = "https://fonts.googleapis.com/css2?family=Open+Sans";
     private String pathLocalOpenSans =  getClass().getResource("/OpenSans-Bold.ttf").toExternalForm();
 
+//    Métodos da classe LeftBar
+
+    /**
+     * Método construtor resposável pela composição da classe LeftBar.
+     * @param barWidth Instância contendo a largura da coluna da lateral.
+     * @param barHeight Instância contendo a altura da coluna da lateral.
+     */
     public LeftBar(final int barWidth, final int barHeight){
         System.out.println("LeftBar - LeftBar(): BEGIN");
         paneLeftBar.setPrefWidth(barWidth);
@@ -28,6 +41,10 @@ public class LeftBar {
         System.out.println("LeftBar - LeftBar(): END");
     }
 
+    /**
+     * Método responsável pela composição principal da barra lateral.
+     * @return Retorna a composição principal da barra lateral.
+     */
     public Pane createPaneLeftBar() {
 
         final VBox buttonsVerticalBox = new VBox();
@@ -92,6 +109,10 @@ public class LeftBar {
         return paneLeftBar;
     }
 
+    /**
+     * Método responsável pelo botão de retorno a janela principal da aplicação.
+     * @return Retorna a composição do botão de retorno a janela principal da aplicação.
+     */
     private static Button createButtonBackToHomePage() {
         final int paddingButtonTop = 55;
         final int paddingButtonLeft = 0;
@@ -113,6 +134,11 @@ public class LeftBar {
         return buttonBackToHomePage;
     }
 
+    /**
+     * Método responsável pela composição individual do botão de algoritmos da barra lateral.
+     * @param buttonName Instância contendo o nome do algoritmo indicado pelo botão.
+     * @return Retorna a composição individual do botão de algoritmos da barra lateral.
+     */
     private static Button createFieldSelectAlgorithm(final String buttonName) {
 
         final Button fieldSelectAlgorithm = new Button(buttonName);

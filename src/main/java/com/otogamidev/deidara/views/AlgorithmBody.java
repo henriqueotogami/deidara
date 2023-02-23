@@ -6,8 +6,15 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
+/**
+ * Classe responsável pela composição visual do corpo do algoritmo, contendo os campos de entrada e saída de dados,
+ * botões de ação do usuário, seleção de algoritmos e informacão sobre o algoritmo selecionado.
+ * @author henriquematheusalvespereira
+ * @since 22-02-2023
+ */
 public class AlgorithmBody {
 
+//    Atributos da classe AlgorithmBody
     private Pane paneAlgorithmBody = new Pane();
     private String pathStyleFile = getClass().getResource("/StyleAlgorithmBody.css").toExternalForm();
 
@@ -15,6 +22,13 @@ public class AlgorithmBody {
     private final TextField fieldOutput = new TextField();
     final Button buttonCalculateCRC = new Button("CALCULATE");
 
+//    Métodos da classe AlgorithmBody
+
+    /**
+     * Método construtor da classe AlgorithmBody.
+     * @param bodyWidth Instância contendo o valor da largura da coluna do corpo.
+     * @param bodyHeight Instância contendo o valor da altura da coluna do corpo.
+     */
     public AlgorithmBody(final int bodyWidth, final int bodyHeight) {
         System.out.println("AlgorithmBody - AlgorithmBody(): BEGIN");
         paneAlgorithmBody.setPrefWidth(bodyWidth);
@@ -26,12 +40,28 @@ public class AlgorithmBody {
         System.out.println("AlgorithmBody - AlgorithmBody(): END");
     }
 
+    /**
+     * Método responsável pela obtenção da instância do campo de entrada de dados.
+     * @return Retorna a instância do campo de entrada de dados.
+     */
     public TextField getFieldInput() { return fieldInput; }
 
+    /**
+     * Método responsável pela obtenção da instância do campo de saída de dados.
+     * @return Retorna a instância do campo de saída de dados.
+     */
     public TextField getFieldOutput() { return fieldOutput; }
 
+    /**
+     * Método responsável pela obtenção da instância do botão de requisição do cálculo do CRC.
+     * @return Retorna a instância do botão de requisição do cálculo do CRC.
+     */
     public Button getButtonCalculateCRC() { return buttonCalculateCRC; }
 
+    /**
+     * Método responsável pela composição principal da coluna do corpo.
+     * @return Retorna a composição do corpo do algoritmo selecionado.
+     */
     public Pane createAlgorithmBody() {
 
         final VBox verticalBodyBox = new VBox();
@@ -82,6 +112,10 @@ public class AlgorithmBody {
         return paneAlgorithmBody;
     }
 
+    /**
+     * Método responsável pela composição do cabeçalho informando o algoritmo selecionado.
+     * @return Retorna a composição do cabeçalho de informação do algoritmo.
+     */
     private static TextField createHeaderNameAlgorithm() {
 
         final TextField headerNameAlgorithm = new TextField("ALGORITHM-01");
@@ -98,6 +132,10 @@ public class AlgorithmBody {
         return headerNameAlgorithm;
     }
 
+    /**
+     * Método responsável pela composição do conjunto de botões de seleção do tipo de dados visualizado.
+     * @return Retorna a composição do conjunto de botões de seleção do tipo de dados visualizado.
+     */
     private static HBox createGroupDataType() {
 
         final RadioButton buttonASCII = new RadioButton("ASCII");
@@ -141,6 +179,10 @@ public class AlgorithmBody {
         return dualHorizontalBox;
     }
 
+    /**
+     * Método responsável pela composição do grupo de entrada de dados.
+     * @return Retorna a composição do grupo de entrada de dados.
+     */
     private VBox createInputBox() {
 
         final VBox verticalInputBox = new VBox();
@@ -173,6 +215,10 @@ public class AlgorithmBody {
         return verticalInputBox;
     }
 
+    /**
+     * Método responsável pela composição do grupo de saída de dados.
+     * @return Retorna a composição do grupo de saída de dados.
+     */
     private VBox createOutputBox() {
 
         final VBox verticalOutputBox = new VBox();
@@ -205,6 +251,10 @@ public class AlgorithmBody {
         return verticalOutputBox;
     }
 
+    /**
+     * Método responsável pela composição do campo informativo sobre o algoritmo selecionado.
+     * @return Retorna a composição do campo informativo sobre o algoritmo selecionado.
+     */
     private VBox createAboutBox() {
 
         final VBox verticalAboutBox = new VBox();
