@@ -33,6 +33,10 @@ public class MainManager extends Thread {
         this.stage = stage;
     }
 
+    public MainManager(){
+        super();
+    }
+
     /**
      * Método responsável por indicar se a aplicação está executando.
      * @return Valor true indicando execução ou valor false indicando pausa.
@@ -48,7 +52,7 @@ public class MainManager extends Thread {
             screenCalculation.startScreenCalculation(stage);
             isRunning = true;
             this.start();
-        } catch (IOException ioException) {
+        } catch (final IOException ioException) {
             isRunning = false;
             throw new RuntimeException(ioException);
         } finally {
@@ -63,9 +67,9 @@ public class MainManager extends Thread {
     public void run() {
         while(isRunning) {
 //            System.out.println("MainManager - run(): BEGIN");
-            final boolean isPressedButtonCalculate = screenCalculation.getAlgorithmBody().getButtonCalculateCRC().isPressed();
+            final boolean isPressedButtonCalculate = screenCalculation.getAlgorithmBody().isButtonCalculateCrcClicked();
             if(isPressedButtonCalculate) {
-                final String textInputData = screenCalculation.getAlgorithmBody().getFieldInput().getText();
+                final String textInputData = screenCalculation.getAlgorithmBody().getDataTypedByUser();
                 System.out.println("MainManager - run() - textInputData: ".concat(textInputData));
                 receiveInputData = new ReceiveInputData(textInputData);
                 receiveInputData.initParserReceivedData();
@@ -77,6 +81,7 @@ public class MainManager extends Thread {
             } catch (InterruptedException interruptedException) {
                 throw new RuntimeException(interruptedException);
             }
+            continue;
         }
     }
 }
