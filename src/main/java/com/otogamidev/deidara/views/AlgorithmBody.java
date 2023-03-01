@@ -17,10 +17,12 @@ public class AlgorithmBody {
 //    Atributos da classe AlgorithmBody
     private Pane paneAlgorithmBody = new Pane();
     private String pathStyleFile = getClass().getResource("/StyleAlgorithmBody.css").toExternalForm();
-
     private final TextField fieldInput = new TextField();
     private final TextField fieldOutput = new TextField();
-    final Button buttonCalculateCRC = new Button("CALCULATE");
+    private final Button buttonCalculateCRC = new Button("CALCULATE");
+    private String dataTypedByUser = null;
+    private boolean isFieldInputClicked = false;
+    private boolean isButtonCalculateCrcClicked = false;
 
 //    Métodos da classe AlgorithmBody
 
@@ -57,6 +59,9 @@ public class AlgorithmBody {
      * @return Retorna a instância do botão de requisição do cálculo do CRC.
      */
     public Button getButtonCalculateCRC() { return buttonCalculateCRC; }
+    public String getDataTypedByUser() { return dataTypedByUser; }
+    public boolean isFieldInputClicked() { return isFieldInputClicked; }
+    public boolean isButtonCalculateCrcClicked() { return isButtonCalculateCrcClicked; }
 
     /**
      * Método responsável pela composição principal da coluna do corpo.
@@ -90,6 +95,13 @@ public class AlgorithmBody {
         buttonCalculateCRC.setMaxHeight(20);
         buttonCalculateCRC.setPrefHeight(20);
         buttonCalculateCRC.setPadding(paddingButtonCalculateCRC);
+        buttonCalculateCRC.setOnMouseClicked(
+            mouseEvent -> {
+                System.out.println("Button Calculate CRC was clicked.");
+                this.isButtonCalculateCrcClicked = true;
+                this.dataTypedByUser = this.fieldInput.getText();
+            }
+        );
         buttonCalculateCRC.getStyleClass().add("style-button-calculate-crc");
 
         verticalBodyBox.setPrefWidth(300);
@@ -133,53 +145,6 @@ public class AlgorithmBody {
     }
 
     /**
-     * Método responsável pela composição do conjunto de botões de seleção do tipo de dados visualizado.
-     * @return Retorna a composição do conjunto de botões de seleção do tipo de dados visualizado.
-     */
-    private static HBox createGroupDataType() {
-
-        final RadioButton buttonASCII = new RadioButton("ASCII");
-        final RadioButton buttonHex = new RadioButton("HEX");
-        final RadioButton buttonDec = new RadioButton("DEC");
-        final RadioButton buttonOct = new RadioButton("OCT");
-        final RadioButton buttonBin = new RadioButton("BIN");
-
-        final int paddingTopButton = 0;
-        final int paddingLeftButton = 20;
-        final int paddingBottomButton = 0;
-        final int paddingRightButton = 0;
-        final Insets paddingButton = new Insets(paddingTopButton, paddingLeftButton, paddingBottomButton, paddingRightButton);
-
-        buttonASCII.setPadding(paddingButton);
-        buttonHex.setPadding(paddingButton);
-        buttonDec.setPadding(paddingButton);
-        buttonOct.setPadding(paddingButton);
-        buttonBin.setPadding(paddingButton);
-
-        buttonASCII.getStyleClass().add("style-text-radio-buttons");
-        buttonHex.getStyleClass().add("style-text-radio-buttons");
-        buttonDec.getStyleClass().add("style-text-radio-buttons");
-        buttonOct.getStyleClass().add("style-text-radio-buttons");
-        buttonBin.getStyleClass().add("style-text-radio-buttons");
-
-        final HBox dualHorizontalBox = new HBox();
-        final int paddingTopHbox = 0;
-        final int paddingLeftHbox = 0;
-        final int paddingBottomHbox = 20;
-        final int paddingRightHbox = 0;
-        final Insets paddingHorizontalBox = new Insets(paddingTopHbox, paddingLeftHbox, paddingBottomHbox, paddingRightHbox);
-
-        dualHorizontalBox.getChildren().add(buttonASCII);
-        dualHorizontalBox.getChildren().add(buttonHex);
-        dualHorizontalBox.getChildren().add(buttonDec);
-        dualHorizontalBox.getChildren().add(buttonOct);
-        dualHorizontalBox.getChildren().add(buttonBin);
-        dualHorizontalBox.setPadding(paddingHorizontalBox);
-
-        return dualHorizontalBox;
-    }
-
-    /**
      * Método responsável pela composição do grupo de entrada de dados.
      * @return Retorna a composição do grupo de entrada de dados.
      */
@@ -187,7 +152,7 @@ public class AlgorithmBody {
 
         final VBox verticalInputBox = new VBox();
         final GridPane horizontalHeaderPane = new GridPane();
-        final HBox inputSelectDataType = createGroupDataType();
+        final HBox inputSelectDataType = new ButtonGroupDataType().createGroupDataType("Input Field - ");
 
         final Label titleFieldInput = new Label("INPUT");
         final Hyperlink textClickToExpand = new Hyperlink("CLICK TO EXPAND");
@@ -204,8 +169,14 @@ public class AlgorithmBody {
         horizontalHeaderPane.getColumnConstraints().get(0).setHalignment(HPos.LEFT);
         horizontalHeaderPane.getColumnConstraints().get(1).setHalignment(HPos.RIGHT);
 
-        this.fieldInput.setPrefWidth(300);
+        fieldInput.setPrefWidth(300);
         fieldInput.setPrefHeight(25);
+        fieldInput.setOnMouseClicked(
+            mouseEvent -> {
+                System.out.println("Field Input was clicked.");
+                isFieldInputClicked = true;
+            }
+        );
         fieldInput.getStyleClass().add("style-field-input");
 
         verticalInputBox.getChildren().add(horizontalHeaderPane);
@@ -223,7 +194,7 @@ public class AlgorithmBody {
 
         final VBox verticalOutputBox = new VBox();
         final GridPane horizontalHeaderPane = new GridPane();
-        final HBox outputSelectDataType = createGroupDataType();
+        final HBox outputSelectDataType = new ButtonGroupDataType().createGroupDataType("Output Field - ");
 
         final Label textOutput = new Label("OUTPUT");
         final Hyperlink textClickToExpand = new Hyperlink("CLICK TO EXPAND");
