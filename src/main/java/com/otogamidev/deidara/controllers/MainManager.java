@@ -70,8 +70,9 @@ public class MainManager extends Thread {
             final boolean isPressedButtonCalculate = screenCalculation.getAlgorithmBody().isButtonCalculateCrcClicked();
             if(isPressedButtonCalculate) {
                 final String textInputData = screenCalculation.getAlgorithmBody().getDataTypedByUser();
+                final int indexButtonSelected = screenCalculation.getAlgorithmBody().getIndexButtonFieldInputWasClicked();
                 System.out.println("MainManager - run() - textInputData: ".concat(textInputData));
-                receiveInputData = new ReceiveInputData(textInputData);
+                receiveInputData = new ReceiveInputData(textInputData, indexButtonSelected);
                 receiveInputData.initParserReceivedData();
                 break;
             }
