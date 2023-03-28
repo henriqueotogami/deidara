@@ -7,6 +7,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Classe responsável pelo recebimento de dados analisados e tratados pelas classes dos controladores,
@@ -65,21 +66,20 @@ public class CalculateCRC16 {
 //        Checksum: BB3D
 //        CRC: 627A -> 7A62
 
-        final String rawInputMessage = "21 3B 00 C4";
+        final String rawInputMessage = "21 3B 00 FF";
         final String rawInputPoly = "BF05";
         final String WHITESPACE = " ";
-        final ArrayList<Byte> arrayRawInputMessage = new ArrayList<>();
+        final ArrayList<Integer> arrayRawIntegerMessage = new ArrayList<>();
+        Integer[] sumAllBytes = new Integer[]{((Integer) 0)};
 
         if(rawInputMessage.contains(WHITESPACE)){
             System.out.println("CalculateCRC16 - main(): raw input message has a whitespace.");
-            final String[] arraySplitRawInMessage = rawInputMessage.split(WHITESPACE, rawInputMessage.length());
-            System.out.println("CalculateCRC16 - main(): arraySplitRawInMessage.length " + arraySplitRawInMessage.length);
-            arrayRawInputMessage.forEach(splitByte -> Byte.parseByte(arraySplitRawInMessage[splitByte]));
-            System.out.println("CalculateCRC16 - main(): arrayRawInputMessage.size() " + arrayRawInputMessage.size());
-            final Iterator<Byte> iterator = arrayRawInputMessage.iterator();
-            while(iterator.hasNext()){
-                System.out.println("CalculateCRC16 - main(): arrayRawInputMessage[next] = " + Long.toHexString(Byte.toUnsignedLong(iterator.next())));
-            }
+            final ArrayList<String> arraySplitRawInMessage = new ArrayList<>(List.of(rawInputMessage.split(WHITESPACE, rawInputMessage.length())));
+            System.out.println("CalculateCRC16 - main(): arraySplitRawInMessage.size() " + arraySplitRawInMessage.size());
+            arraySplitRawInMessage.forEach(splitByte -> arrayRawIntegerMessage.add(Integer.valueOf(splitByte,16)));
+            System.out.println("CalculateCRC16 - main(): arrayRawIntegerMessage.size() " + arrayRawIntegerMessage.size());
+            arrayRawIntegerMessage.forEach(separatedByte -> sumAllBytes[0] += separatedByte);
+            System.out.println("CalculateCRC16 - main(): sumAllBytes[0] = " + sumAllBytes[0]);
         }
 
     }
