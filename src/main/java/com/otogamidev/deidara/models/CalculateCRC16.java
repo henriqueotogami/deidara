@@ -67,19 +67,64 @@ public class CalculateCRC16 {
 //        CRC: 627A -> 7A62
 
         final String rawInputMessage = "21 3B 00 FF";
-        final String rawInputPoly = "BF05";
+        final String rawInputPoly = "BF 05";
         final String WHITESPACE = " ";
         final ArrayList<Integer> arrayRawIntegerMessage = new ArrayList<>();
         Integer[] sumAllBytes = new Integer[]{((Integer) 0)};
-
+        int extractedSumAllBytes = 0;
+        String binarySumAllBytes = "";
+        final ArrayList<Integer> arrayRawPoly = new ArrayList<>();
+        Integer[] arraySumPoly = new Integer[]{((Integer) 0)};
+        int extractedPoly = 0;
+        String binarySeparatedPoly = "";
+        int leftBitShiftSumAllBytes = 0;
+        String binaryLeftBitShiftSumAllBytes = "";
         if(rawInputMessage.contains(WHITESPACE)){
             System.out.println("CalculateCRC16 - main(): raw input message has a whitespace.");
             final ArrayList<String> arraySplitRawInMessage = new ArrayList<>(List.of(rawInputMessage.split(WHITESPACE, rawInputMessage.length())));
-            System.out.println("CalculateCRC16 - main(): arraySplitRawInMessage.size() " + arraySplitRawInMessage.size());
+            System.out.println("CalculateCRC16 - main(): arraySplitRawInMessage.size() = " + arraySplitRawInMessage.size());
             arraySplitRawInMessage.forEach(splitByte -> arrayRawIntegerMessage.add(Integer.valueOf(splitByte,16)));
-            System.out.println("CalculateCRC16 - main(): arrayRawIntegerMessage.size() " + arrayRawIntegerMessage.size());
+            System.out.println("CalculateCRC16 - main(): arrayRawIntegerMessage.size() = " + arrayRawIntegerMessage.size());
             arrayRawIntegerMessage.forEach(separatedByte -> sumAllBytes[0] += separatedByte);
             System.out.println("CalculateCRC16 - main(): sumAllBytes[0] = " + sumAllBytes[0]);
+            extractedSumAllBytes = sumAllBytes[0].intValue();
+            System.out.println("CalculateCRC16 - main(): extractedSumAllBytes = " + extractedSumAllBytes);
+            binarySumAllBytes = Integer.toBinaryString(extractedSumAllBytes);
+            System.out.println("CalculateCRC16 - main(): binarySumAllBytes = " + binarySumAllBytes);
+
+            final ArrayList<String> arraySplitRawPoly = new ArrayList<>(List.of(rawInputPoly.split(WHITESPACE, rawInputPoly.length())));
+            System.out.println("CalculateCRC16 - main(): arraySplitRawPoly.size() = " + arraySplitRawPoly.size());
+            arraySplitRawPoly.forEach(splitPoly -> arrayRawPoly.add(Integer.valueOf(splitPoly, 16)));
+            System.out.println("CalculateCRC16 - main(): arrayRawPoly.size() = " + arrayRawPoly.size());
+            arrayRawPoly.forEach(separatedPoly -> arraySumPoly[0] += separatedPoly);
+            System.out.println("CalculateCRC16 - main(): arraySumPoly[0] = " + arraySumPoly[0]);
+            extractedPoly = arraySumPoly[0].intValue();
+            System.out.println("CalculateCRC16 - main(): extractedPoly = " + extractedPoly);
+            binarySeparatedPoly = Integer.toBinaryString(extractedPoly);
+            System.out.println("CalculateCRC16 - main(): binarySeparatedPoly = " + binarySeparatedPoly);
+
+            leftBitShiftSumAllBytes = (extractedSumAllBytes << binarySeparatedPoly.length());
+            System.out.println("CalculateCRC16 - main(): leftBitShiftSumAllBytes = " + leftBitShiftSumAllBytes);
+            binaryLeftBitShiftSumAllBytes = Integer.toBinaryString(leftBitShiftSumAllBytes);
+            System.out.println("CalculateCRC16 - main(): binaryLeftBitShiftSumAllBytes = " + binaryLeftBitShiftSumAllBytes);
+
+            int dividend = leftBitShiftSumAllBytes;
+            int divisor = extractedPoly;
+            int quocient  = 0;
+            int remainder = 0;
+            String binaryDividend = binaryLeftBitShiftSumAllBytes;
+            String binaryDivisor = "";
+            String binaryQuocient = "";
+            String binaryRemainder = binarySeparatedPoly;
+            final int sizeLeftBitShiftSumAllBytes = binaryLeftBitShiftSumAllBytes.length();
+            final ArrayList<Integer> storage = new ArrayList<>();
+            for(int index = 0; dividend >= index; index++ ) {
+                remainder = (dividend ^ divisor);
+                dividend -= divisor;
+                System.out.println("CalculateCRC16 - main(): index = " + index + " remainder = " + remainder);
+                binaryRemainder = Integer.toBinaryString(remainder);
+                System.out.println("CalculateCRC16 - main(): index = " + index + " binaryRemainder = " + binaryRemainder);
+            }
         }
 
     }
