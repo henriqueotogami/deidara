@@ -113,14 +113,27 @@ public class CalculateCRC16 {
             int quocient  = 0;
             int remainder = 0;
             String binaryDividend = binaryLeftBitShiftSumAllBytes;
-            String binaryDivisor = "";
+            String binaryDivisor = binarySeparatedPoly;
             String binaryQuocient = "";
-            String binaryRemainder = binarySeparatedPoly;
+            String binaryRemainder = null;
+            String cuttingLeftBinaryDividend = null;
+            int binaryDividendCutConvert = 0;
+            int sizeBinaryDividend = binaryDividend.length();
+            int sizeBinaryDivisor = binaryDivisor.length();
+            final int cuttingBegin = 0;
+            final int cuttingEnd = sizeBinaryDivisor;
             final int sizeLeftBitShiftSumAllBytes = binaryLeftBitShiftSumAllBytes.length();
             final ArrayList<Integer> storage = new ArrayList<>();
             for(int index = 0; dividend >= index; index++ ) {
-                remainder = (dividend ^ divisor);
-                dividend -= divisor;
+                cuttingLeftBinaryDividend = binaryDividend.substring(cuttingBegin, cuttingEnd);
+                System.out.println("CalculateCRC16 - main(): cuttingLeftBinaryDividend = " + cuttingLeftBinaryDividend);
+                binaryDividendCutConvert = Integer.parseInt(cuttingLeftBinaryDividend, 2);
+                System.out.println("CalculateCRC16 - main(): binaryDividendCutConvert = " + binaryDividendCutConvert);
+                System.out.println("CalculateCRC16 - main(): divisor = " + divisor);
+                remainder = (binaryDividendCutConvert ^ divisor);
+
+
+
                 System.out.println("CalculateCRC16 - main(): index = " + index + " remainder = " + remainder);
                 binaryRemainder = Integer.toBinaryString(remainder);
                 System.out.println("CalculateCRC16 - main(): index = " + index + " binaryRemainder = " + binaryRemainder);
