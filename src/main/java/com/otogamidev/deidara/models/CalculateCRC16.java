@@ -124,20 +124,28 @@ public class CalculateCRC16 {
             final int cuttingEnd = sizeBinaryDivisor;
             final int sizeLeftBitShiftSumAllBytes = binaryLeftBitShiftSumAllBytes.length();
             final ArrayList<Integer> storage = new ArrayList<>();
-            for(int index = 0; dividend >= index; index++ ) {
+            for(int index = 0; sizeBinaryDividend > sizeBinaryDivisor; index++ ) {
                 cuttingLeftBinaryDividend = binaryDividend.substring(cuttingBegin, cuttingEnd);
                 System.out.println("CalculateCRC16 - main(): cuttingLeftBinaryDividend = " + cuttingLeftBinaryDividend);
                 binaryDividendCutConvert = Integer.parseInt(cuttingLeftBinaryDividend, 2);
                 System.out.println("CalculateCRC16 - main(): binaryDividendCutConvert = " + binaryDividendCutConvert);
                 System.out.println("CalculateCRC16 - main(): divisor = " + divisor);
                 remainder = (binaryDividendCutConvert ^ divisor);
-
-
-
+                binaryDividend = binaryDividend.substring(cuttingEnd, sizeBinaryDividend);
+                sizeBinaryDividend = binaryDividend.length();
                 System.out.println("CalculateCRC16 - main(): index = " + index + " remainder = " + remainder);
                 binaryRemainder = Integer.toBinaryString(remainder);
                 System.out.println("CalculateCRC16 - main(): index = " + index + " binaryRemainder = " + binaryRemainder);
             }
+            // todo: fazer o deslocamento a cada um bit e nao considerando o tamanho do polinomio
+            System.out.println("CalculateCRC16 - main(): Final cuttingLeftBinaryDividend = " + cuttingLeftBinaryDividend);
+            System.out.println("CalculateCRC16 - main(): Final binaryDividendCutConvert = " + binaryDividendCutConvert);
+
+            System.out.println("CalculateCRC16 - main(): divisor = " + divisor);
+
+            System.out.println("CalculateCRC16 - main(): Final remainder = " + remainder);
+            System.out.println("CalculateCRC16 - main(): Final binaryRemainder = " + binaryRemainder);
+
         }
 
     }
