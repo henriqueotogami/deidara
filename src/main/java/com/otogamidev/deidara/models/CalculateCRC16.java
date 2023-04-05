@@ -112,30 +112,42 @@ public class CalculateCRC16 {
             int divisor = extractedPoly;
             int quocient  = 0;
             int remainder = 0;
+            int finalRemainder = 0;
             String binaryDividend = binaryLeftBitShiftSumAllBytes;
             String binaryDivisor = binarySeparatedPoly;
             String binaryQuocient = "";
             String binaryRemainder = null;
+            String binaryFinalRemainder = null;
             String cuttingLeftBinaryDividend = null;
             int binaryDividendCutConvert = 0;
             int sizeBinaryDividend = binaryDividend.length();
             int sizeBinaryDivisor = binaryDivisor.length();
-            final int cuttingBegin = 0;
-            final int cuttingEnd = sizeBinaryDivisor;
+            int cuttingBegin = 0;
+            int cuttingEnd = sizeBinaryDivisor;
             final int sizeLeftBitShiftSumAllBytes = binaryLeftBitShiftSumAllBytes.length();
             final ArrayList<Integer> storage = new ArrayList<>();
-            for(int index = 0; sizeBinaryDividend > sizeBinaryDivisor; index++ ) {
+            for(int index = 0; 100 > sizeBinaryDivisor; index++ ) {
                 cuttingLeftBinaryDividend = binaryDividend.substring(cuttingBegin, cuttingEnd);
                 System.out.println("CalculateCRC16 - main(): cuttingLeftBinaryDividend = " + cuttingLeftBinaryDividend);
                 binaryDividendCutConvert = Integer.parseInt(cuttingLeftBinaryDividend, 2);
                 System.out.println("CalculateCRC16 - main(): binaryDividendCutConvert = " + binaryDividendCutConvert);
                 System.out.println("CalculateCRC16 - main(): divisor = " + divisor);
-                remainder = (binaryDividendCutConvert ^ divisor);
-                binaryDividend = binaryDividend.substring(cuttingEnd, sizeBinaryDividend);
-                sizeBinaryDividend = binaryDividend.length();
-                System.out.println("CalculateCRC16 - main(): index = " + index + " remainder = " + remainder);
-                binaryRemainder = Integer.toBinaryString(remainder);
-                System.out.println("CalculateCRC16 - main(): index = " + index + " binaryRemainder = " + binaryRemainder);
+                boolean isDividendGreaterThanZero = (binaryDividendCutConvert > 0);
+                if(isDividendGreaterThanZero) {
+                    remainder = (binaryDividendCutConvert ^ divisor);
+                    cuttingBegin += 1;
+                    cuttingEnd += 1;
+                    System.out.println("CalculateCRC16 - main(): index = " + index + " remainder = " + remainder);
+                    binaryRemainder = Integer.toBinaryString(remainder);
+                    System.out.println("CalculateCRC16 - main(): index = " + index + " binaryRemainder = " + binaryRemainder);
+                } else {
+                    finalRemainder = binaryDividendCutConvert;
+                    System.out.println("CalculateCRC16 - main(): index = " + index + " finalRemainder = " + finalRemainder);
+                    binaryFinalRemainder = Integer.toBinaryString(remainder);
+                    System.out.println("CalculateCRC16 - main(): index = " + index + " binaryFinalRemainder = " + binaryFinalRemainder);
+                    break;
+                }
+
             }
             // todo: fazer o deslocamento a cada um bit e nao considerando o tamanho do polinomio
             System.out.println("CalculateCRC16 - main(): Final cuttingLeftBinaryDividend = " + cuttingLeftBinaryDividend);
