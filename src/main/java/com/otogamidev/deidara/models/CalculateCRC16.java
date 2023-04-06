@@ -64,7 +64,7 @@ public class CalculateCRC16 {
 //        Entrada: 213B00C4
 //        Polinomio: 8005
 //        Checksum: BB3D
-//        CRC: 627A -> 7A62
+//        CRC: 0xB13B
 
         final String rawInputMessage = "21 3B 00 FF";
         final String rawInputPoly = "BF 05";
@@ -119,6 +119,7 @@ public class CalculateCRC16 {
             String binaryRemainder = null;
             String binaryFinalRemainder = null;
             String cuttingLeftBinaryDividend = null;
+            String binaryRemainderPlusBeforeBinary = null;
             int binaryDividendCutConvert = 0;
             int sizeBinaryDividend = binaryDividend.length();
             int sizeBinaryDivisor = binaryDivisor.length();
@@ -126,25 +127,29 @@ public class CalculateCRC16 {
             int cuttingEnd = sizeBinaryDivisor;
             final int sizeLeftBitShiftSumAllBytes = binaryLeftBitShiftSumAllBytes.length();
             final ArrayList<Integer> storage = new ArrayList<>();
-            for(int index = 0; 100 > sizeBinaryDivisor; index++ ) {
+            for(int index = 0;binaryDividend.length() > cuttingEnd; index++ ) {
                 cuttingLeftBinaryDividend = binaryDividend.substring(cuttingBegin, cuttingEnd);
                 System.out.println("CalculateCRC16 - main(): cuttingLeftBinaryDividend = " + cuttingLeftBinaryDividend);
                 binaryDividendCutConvert = Integer.parseInt(cuttingLeftBinaryDividend, 2);
                 System.out.println("CalculateCRC16 - main(): binaryDividendCutConvert = " + binaryDividendCutConvert);
                 System.out.println("CalculateCRC16 - main(): divisor = " + divisor);
-                boolean isDividendGreaterThanZero = (binaryDividendCutConvert > 0);
+                boolean isDividendGreaterThanZero = (cuttingLeftBinaryDividend.length() > 0);
                 if(isDividendGreaterThanZero) {
                     remainder = (binaryDividendCutConvert ^ divisor);
+                    binaryRemainder = Integer.toBinaryString(remainder);
+                    binaryRemainderPlusBeforeBinary = binaryRemainder.concat(cuttingLeftBinaryDividend);
+                    remainder = Integer.parseInt(binaryRemainderPlusBeforeBinary, 2);
                     cuttingBegin += 1;
                     cuttingEnd += 1;
                     System.out.println("CalculateCRC16 - main(): index = " + index + " remainder = " + remainder);
-                    binaryRemainder = Integer.toBinaryString(remainder);
                     System.out.println("CalculateCRC16 - main(): index = " + index + " binaryRemainder = " + binaryRemainder);
+                    System.out.println("CalculateCRC16 - main(): index = " + index + " binaryRemainderPlusBeforeBinary = " + binaryRemainderPlusBeforeBinary);
                 } else {
-                    finalRemainder = binaryDividendCutConvert;
-                    System.out.println("CalculateCRC16 - main(): index = " + index + " finalRemainder = " + finalRemainder);
-                    binaryFinalRemainder = Integer.toBinaryString(remainder);
-                    System.out.println("CalculateCRC16 - main(): index = " + index + " binaryFinalRemainder = " + binaryFinalRemainder);
+//                    finalRemainder = binaryDividendCutConvert;
+//                    System.out.println("CalculateCRC16 - main(): index = " + index + " finalRemainder = " + finalRemainder);
+//                    binaryFinalRemainder = Integer.toBinaryString(remainder);
+//                    System.out.println("CalculateCRC16 - main(): index = " + index + " binaryFinalRemainder = " + binaryFinalRemainder);
+                    System.out.println("CalculateCRC16 - main(): BREAK");
                     break;
                 }
 
