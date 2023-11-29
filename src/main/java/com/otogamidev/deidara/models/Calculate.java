@@ -68,20 +68,18 @@ public class Calculate {
 
         int messageIndex = 0;
         int countRemainder = 0;
-        int displacement = 0;
+        int displacement = polynomial.length;
         int quotientIndex = 0;
         int lastQuotient = 0;
 
 //    1 - Recorto o dividendo da esquerda pra direita, com o mesmo tamanho que o divisor, e salvo como
 //    primeiro resto
         for (int index = 0; firstRemainder.length > index; index++) {
-            firstRemainder[index] = polynomial[index];
+            firstRemainder[index] = augmentedMessage[index];
         }
-
+//        System.out.println("Augmented message     = " + Arrays.toString(augmentedMessage));
         while(true) {
             System.out.println(" ");
-            messageIndex = displacement;
-            System.out.println("Augmented message     = " + Arrays.toString(augmentedMessage));
             System.out.println("First Remainder " + countRemainder + "     = " + Arrays.toString(firstRemainder));
 
             final String regexRemoveAnyNotRange = "[^a-z0-1]";
@@ -101,7 +99,7 @@ public class Calculate {
 //    2 - Verifico se o valor em decimal do primeiro resto é maior que o quociente
 //            Defino valor 1 para o quociente se o quociente for maior
 //            Defino valor 0 para o quociente se o quociente for menor
-            if(decimalDivisor > decimalFirstRemainder) lastQuotient = 1;
+            if(decimalFirstRemainder >= decimalDivisor) lastQuotient = 1;
             else lastQuotient = 0;
 
             quotient[quotientIndex] = lastQuotient;
@@ -109,11 +107,18 @@ public class Calculate {
 
 //    3 - Multiplico o quociente pelo divisor e salvo como o último resto
             for (int index = 0; lastRemainder.length > index; index++) {
-                final int eachBitRemainder = firstRemainder[index];
-                lastRemainder[index] = twoBitsXOR(  eachBitRemainder, lastQuotient);
+                final int eachBitPolynomial = polynomial[index];
+                if(lastQuotient == 1) lastRemainder[index] = eachBitPolynomial;
+                else lastRemainder[index] = 0;
             }
             System.out.println("Last Remainder " + countRemainder + "      = " + Arrays.toString(lastRemainder));
 
+            for(int index = 0; lastRemainder.length > index; index++) {
+                final int eachBitFirstRemainder = firstRemainder[index];
+                final int eachBitLastRemainder = lastRemainder[index];
+                lastRemainder[index] = twoBitsXOR(eachBitFirstRemainder, eachBitLastRemainder);
+            }
+            System.out.println("XOR remainders " + countRemainder + "      = " + Arrays.toString(lastRemainder));
 //    4 - Aplico XOR entre o primeiro e o último resto e salvo o valor no primeiro resto
 //            for (int index = 0; lastRemainder.length > index; index++) {
 //                final int eachBitFirstRemainder = firstRemainder[index];
