@@ -53,7 +53,6 @@ public class Calculate {
             } else {
                 augmentedMessage[index] = 0;
             }
-//            System.out.println("Index = " + index + " | augmentedMessage[index] = " + augmentedMessage[index]);
         }
     }
 
@@ -72,40 +71,28 @@ public class Calculate {
         int quotientIndex = 0;
         int lastQuotient = 0;
 
-//    1 - Recorto o dividendo da esquerda pra direita, com o mesmo tamanho que o divisor, e salvo como
-//    primeiro resto
         for (int index = 0; firstRemainder.length > index; index++) {
             firstRemainder[index] = augmentedMessage[index];
         }
-//        System.out.println("Augmented message     = " + Arrays.toString(augmentedMessage));
-        while(true) {
+
+        while(augmentedMessageSize >= displacement) {
             System.out.println(" ");
             System.out.println("First Remainder " + countRemainder + "     = " + Arrays.toString(firstRemainder));
 
             final String regexRemoveAnyNotRange = "[^a-z0-1]";
             final String nothing = "";
             final String binaryFirstRemainder = Arrays.toString(firstRemainder).replaceAll(regexRemoveAnyNotRange, nothing);
-//            System.out.println("binaryFirstRemainder = " + binaryFirstRemainder);
 
             final int decimalFirstRemainder = Integer.parseInt(binaryFirstRemainder, 2);
-//            System.out.println("decimalFirstRemainder = " + decimalFirstRemainder);
 
             final String binaryDivisor = Arrays.toString(polynomial).replaceAll(regexRemoveAnyNotRange, nothing);
-//            System.out.println("binaryDivisor = " + binaryDivisor);
-
             final int decimalDivisor = Integer.parseInt(binaryDivisor, 2);
-//            System.out.println("decimalDivisor = " + decimalDivisor);
 
-//    2 - Verifico se o valor em decimal do primeiro resto é maior que o quociente
-//            Defino valor 1 para o quociente se o quociente for maior
-//            Defino valor 0 para o quociente se o quociente for menor
             if(decimalFirstRemainder >= decimalDivisor) lastQuotient = 1;
             else lastQuotient = 0;
 
             quotient[quotientIndex] = lastQuotient;
-//            System.out.println("lastQuotient = " + lastQuotient);
 
-//    3 - Multiplico o quociente pelo divisor e salvo como o último resto
             for (int index = 0; lastRemainder.length > index; index++) {
                 final int eachBitPolynomial = polynomial[index];
                 if(lastQuotient == 1) lastRemainder[index] = eachBitPolynomial;
@@ -118,45 +105,24 @@ public class Calculate {
                 final int eachBitLastRemainder = lastRemainder[index];
                 lastRemainder[index] = twoBitsXOR(eachBitFirstRemainder, eachBitLastRemainder);
             }
-            System.out.println("XOR remainders " + countRemainder + "      = " + Arrays.toString(lastRemainder));
-//    4 - Aplico XOR entre o primeiro e o último resto e salvo o valor no primeiro resto
-//            for (int index = 0; lastRemainder.length > index; index++) {
-//                final int eachBitFirstRemainder = firstRemainder[index];
-//                final int eachBitLastRemainder = lastRemainder[index];
-//                firstRemainder[index] = twoBitsXOR(eachBitFirstRemainder, eachBitLastRemainder);
-//            }
-            final String binaryLastRemainder = Arrays.toString(lastRemainder).replaceAll(regexRemoveAnyNotRange, nothing);
-            final int decimalLastRemainder = Integer.parseInt(binaryLastRemainder, 2);
-            System.out.println("decimalLastRemainder = " + decimalLastRemainder);
-            final int subtractionRemainders = decimalFirstRemainder - decimalLastRemainder;
-            System.out.println("subtractionRemainders = " + subtractionRemainders);
-            final String binarySubtractionRemainders = Integer.toBinaryString(subtractionRemainders);
-            System.out.println("binarySubtractionRemainders = " + binarySubtractionRemainders);
 
-            for (int index = 0; (binarySubtractionRemainders.length()-1) > index; index++) {
-                final String eachBitFromSubtraction = binarySubtractionRemainders.substring(index, (index+1));
-                firstRemainder[index] = Integer.parseInt(eachBitFromSubtraction);
+            if(augmentedMessageRealSize > displacement) {
+                for (int index = 0, indexx = 1; firstRemainder.length > index; index++, indexx++) {
+                    if ((firstRemainder.length - 1) == index)
+                        firstRemainder[index] = augmentedMessage[displacement];
+                    else
+                        firstRemainder[index] = lastRemainder[indexx];
+                }
             }
-            System.out.println("XOR First Remainder " + countRemainder + " = " + Arrays.toString(firstRemainder));
-
-//    5 - Desço o bit mais próximo da direita e salvo no primeiro resto
-            for(int index = 0; firstRemainder.length > index; index++) {
-                if((firstRemainder.length-1) == index)
-                    firstRemainder[index] = augmentedMessage[displacement];
-                else
-                    firstRemainder[index] = firstRemainder[index+1];
-            }
-//            System.out.println("New First Remainder " + countRemainder + " = " + Arrays.toString(firstRemainder));
-
-//    6 - Verifico se chegou no último bit do dividendo
-//        Se sim, retorno o valor do último resto
-//        Se não, continua a partir da etapa 2
-            if(displacement == (originalMessage.length)) break;
-
             quotientIndex += 1;
             displacement += 1;
             countRemainder += 1;
         }
+        System.out.println(" ");
+        System.out.println("Original message   = " + Arrays.toString(originalMessage));
+        System.out.println("Augmented message  = " + Arrays.toString(augmentedMessage));
+        System.out.println("Polynomial         = " + Arrays.toString(polynomial));
+        System.out.println("CRC calculated     = " + Arrays.toString(lastRemainder));
     }
 
     public static void main(String[] args) {

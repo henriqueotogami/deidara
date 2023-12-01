@@ -1,0 +1,44 @@
+Original message   = [1, 1, 0, 1, 0, 1, 1, 0, 1, 1]
+Augmented message  = [1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0]
+Polynomial         = [1, 0, 0, 1, 1]
+
+First Remainder 0     = [1, 1, 0, 1, 0]
+Last Remainder 0      = [1, 0, 0, 1, 1]
+
+First Remainder 1     = [1, 0, 0, 1, 1]
+Last Remainder 1      = [1, 0, 0, 1, 1]
+
+First Remainder 2     = [0, 0, 0, 0, 1]
+Last Remainder 2      = [0, 0, 0, 0, 0]
+
+First Remainder 3     = [0, 0, 0, 1, 0]
+Last Remainder 3      = [0, 0, 0, 0, 0]
+
+First Remainder 4     = [0, 0, 1, 0, 1]
+Last Remainder 4      = [0, 0, 0, 0, 0]
+
+First Remainder 5     = [0, 1, 0, 1, 1]
+Last Remainder 5      = [0, 0, 0, 0, 0]
+
+First Remainder 6     = [1, 0, 1, 1, 0]
+Last Remainder 6      = [1, 0, 0, 1, 1]
+
+First Remainder 7     = [0, 1, 0, 1, 0]
+Last Remainder 7      = [0, 0, 0, 0, 0]
+
+First Remainder 8     = [1, 0, 1, 0, 0]
+Last Remainder 8      = [1, 0, 0, 1, 1]
+
+First Remainder 9     = [0, 1, 1, 1, 0]
+Last Remainder 9      = [0, 0, 0, 0, 0]
+
+First Remainder 10     = [0, 1, 1, 1, 0]
+Last Remainder 10      = [0, 0, 0, 0, 0]
+
+Original message   = [1, 1, 0, 1, 0, 1, 1, 0, 1, 1]
+Augmented message  = [1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0]
+Polynomial         = [1, 0, 0, 1, 1]
+CRC calculated     = [0, 1, 1, 1, 0]
+
+30/11/2023 - Henrique Otogami - @henriqueotogami
+Primeira versão do cálculo de CRC
