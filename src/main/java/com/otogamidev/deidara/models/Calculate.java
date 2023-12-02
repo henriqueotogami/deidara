@@ -31,11 +31,20 @@ public class Calculate {
 //    6 - Verifico se chegou no último bit do dividendo
 //        Se sim, retorno o valor do último resto
 //        Se não, continua a partir da etapa 2
-    final static int[] originalMessage = { 1,1,0,1,0,1,1,0,1,1 };
-    final static int[] polynomial = { 1,0,0,1,1 };
+    static int[] originalMessage;
+    static int[] polynomial;
     final static int augmentedMessageSize = (originalMessage.length + polynomial.length);
     final static int augmentedMessageRealSize = (augmentedMessageSize - 1);
     static int[] augmentedMessage = new int[augmentedMessageRealSize];
+    final static int[] lastRemainder = new int[polynomial.length];
+
+    public Calculate(final int[] originalMessage, final int[] polynomial) {
+        this.originalMessage = originalMessage;
+        this.polynomial = polynomial;
+    }
+
+    public int[] getLastRemainder() { return lastRemainder; }
+
     private static int twoBitsXOR(final int firstBit, final int secondBit) {
         if(firstBit == secondBit) return 0;
         else return 1;
@@ -62,7 +71,6 @@ public class Calculate {
         System.out.println("Polynomial         = " + Arrays.toString(polynomial));
 
         final int[] firstRemainder  = new int[polynomial.length];
-        final int[] lastRemainder   = new int[polynomial.length];
         final int[] quotient        = new int[augmentedMessageSize];
 
         int messageIndex = 0;
@@ -125,7 +133,13 @@ public class Calculate {
         System.out.println("CRC calculated     = " + Arrays.toString(lastRemainder));
     }
 
+
     public static void main(String[] args) {
+        increaseMessage();
+        binaryDivision();
+    }
+
+    public void start() {
         increaseMessage();
         binaryDivision();
     }
