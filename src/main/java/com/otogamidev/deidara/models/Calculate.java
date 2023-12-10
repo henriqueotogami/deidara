@@ -33,35 +33,33 @@ public class Calculate {
 //        Se não, continua a partir da etapa 2
     static int[] originalMessage;
     static int[] polynomial;
-    final static int augmentedMessageSize = (originalMessage.length + polynomial.length);
-    final static int augmentedMessageRealSize = (augmentedMessageSize - 1);
-    static int[] augmentedMessage = new int[augmentedMessageRealSize];
-    final static int[] lastRemainder = new int[polynomial.length];
+    static int[] augmentedMessage;
+    static int[] lastRemainder;
+    static int augmentedMessageSize;
+    static int augmentedMessageRealSize;
 
     public Calculate(final int[] originalMessage, final int[] polynomial) {
         this.originalMessage = originalMessage;
         this.polynomial = polynomial;
+        this.augmentedMessageSize = (originalMessage.length + polynomial.length);
+        this.augmentedMessageRealSize = (augmentedMessageSize - 1);
+        this.augmentedMessage = new int[augmentedMessageRealSize];
+        this.lastRemainder = new int[polynomial.length];
     }
 
     public int[] getLastRemainder() { return lastRemainder; }
 
     private static int twoBitsXOR(final int firstBit, final int secondBit) {
-        if(firstBit == secondBit) return 0;
-        else return 1;
+        return (firstBit == secondBit) ? 0 : 1;
     }
 
     private static int multiplyTwoBits(final int firstBit, final int secondBit) {
-        if(firstBit == 0 || secondBit == 0) return 0;
-        else return 1;
+        return (firstBit == 0 || secondBit == 0) ? 0 : 1;
     }
 
     private static void increaseMessage() {
         for(int index = 0; augmentedMessageRealSize > index; index++) {
-            if(originalMessage.length > index) {
-                augmentedMessage[index] = originalMessage[index];
-            } else {
-                augmentedMessage[index] = 0;
-            }
+            augmentedMessage[index] = (originalMessage.length > index) ? originalMessage[index] : 0;
         }
     }
 
@@ -70,18 +68,14 @@ public class Calculate {
         System.out.println("Augmented message  = " + Arrays.toString(augmentedMessage));
         System.out.println("Polynomial         = " + Arrays.toString(polynomial));
 
-        final int[] firstRemainder  = new int[polynomial.length];
+        final int[] firstRemainder  = Arrays.copyOfRange(augmentedMessage, 0, polynomial.length);
         final int[] quotient        = new int[augmentedMessageSize];
 
-        int messageIndex = 0;
         int countRemainder = 0;
         int displacement = polynomial.length;
         int quotientIndex = 0;
         int lastQuotient = 0;
 
-        for (int index = 0; firstRemainder.length > index; index++) {
-            firstRemainder[index] = augmentedMessage[index];
-        }
 
         while(augmentedMessageSize >= displacement) {
             System.out.println(" ");
@@ -133,6 +127,72 @@ public class Calculate {
         System.out.println("CRC calculated     = " + Arrays.toString(lastRemainder));
     }
 
+    private int binaryArrayToDecimal(final int[] binaryArray) {
+        final StringBuilder binaryStringBuilder = new StringBuilder();
+        for (int bit : binaryArray) binaryStringBuilder.append(bit);
+        return Integer.parseInt(binaryStringBuilder.toString(), 2);
+    }
+
+    private void shiftArrayLeft(final int[] array) {
+        System.arraycopy(array, 1, array, 0, array.length - 1);
+        array[array.length - 1] = augmentedMessage[augmentedMessageRealSize - augmentedMessageSize + 1];
+    }
+
+//    private void binaryDivision() {
+//        System.out.println("Original message   = " + Arrays.toString(originalMessage));
+//        System.out.println("Augmented message  = " + Arrays.toString(augmentedMessage));
+//        System.out.println("Polynomial         = " + Arrays.toString(polynomial));
+//
+//        int[] firstRemainder = Arrays.copyOfRange(augmentedMessage, 0, polynomial.length);
+//        int[] quotient = new int[augmentedMessageSize];
+//
+//        int quotientIndex = 0;
+//
+//        while (augmentedMessageSize >= polynomial.length) {
+//            System.out.println(" ");
+//            System.out.println("First Remainder     = " + Arrays.toString(firstRemainder));
+//
+//            int decimalFirstRemainder = binaryArrayToDecimal(firstRemainder);
+//            int decimalDivisor = binaryArrayToDecimal(polynomial);
+//
+//            int lastQuotient = (decimalFirstRemainder >= decimalDivisor) ? 1 : 0;
+//            quotient[quotientIndex] = lastQuotient;
+//
+//            Arrays.fill(lastRemainder, 0);
+//
+//            for (int i = 0; i < polynomial.length; i++) {
+//                lastRemainder[i] = lastQuotient * polynomial[i];
+//            }
+//
+//            System.out.println("Last Remainder      = " + Arrays.toString(lastRemainder));
+//
+//            for (int i = 0; i < lastRemainder.length; i++) {
+//                firstRemainder[i] = twoBitsXOR(firstRemainder[i], lastRemainder[i]);
+//            }
+//
+//            shiftArrayLeft(firstRemainder);
+//
+//            augmentedMessageSize--;
+//            quotientIndex++;
+//        }
+//
+//        System.out.println(" ");
+//        System.out.println("CRC calculated      = " + Arrays.toString(lastRemainder));
+//    }
+//
+//    private int binaryArrayToDecimal(int[] binaryArray) {
+//        StringBuilder binaryStringBuilder = new StringBuilder();
+//        for (int bit : binaryArray) {
+//            binaryStringBuilder.append(bit);
+//        }
+//        return Integer.parseInt(binaryStringBuilder.toString(), 2);
+//    }
+//
+//    private void shiftArrayLeft(int[] array) {
+//        System.arraycopy(array, 1, array, 0, array.length - 1);
+//        array[array.length - 1] = augmentedMessage[augmentedMessageRealSize - augmentedMessageSize + 1];
+//    }
+
 
     public static void main(String[] args) {
         increaseMessage();
@@ -143,4 +203,40 @@ public class Calculate {
         increaseMessage();
         binaryDivision();
     }
+
+//    import java.util.Arrays;
+//
+//    public class CRC16Calculator {
+//
+//        private static final int CRC16_POLYNOMIAL = 0x1021;
+//        private static final int CRC16_INITIAL_VALUE = 0xFFFF;
+//
+//        public static int calculateCRC16(byte[] data) {
+//            int crc = CRC16_INITIAL_VALUE;
+//
+//            for (byte b : data) {
+//                crc ^= (b & 0xFF) << 8;
+//
+//                for (int i = 0; i < 8; i++) {
+//                    if ((crc & 0x8000) != 0) {
+//                        crc = (crc << 1) ^ CRC16_POLYNOMIAL;
+//                    } else {
+//                        crc <<= 1;
+//                    }
+//                }
+//            }
+//
+//            return crc & 0xFFFF;
+//        }
+//
+//        public static void main(String[] args) {
+//            // Exemplo de uso:
+//            byte[] data = "Hello, CRC-16!".getBytes();
+//            int crc16 = calculateCRC16(data);
+//
+//            System.out.println("Data: " + Arrays.toString(data));
+//            System.out.printf("CRC-16: 0x%04X\n", crc16);
+//        }
+//    }
+
 }
